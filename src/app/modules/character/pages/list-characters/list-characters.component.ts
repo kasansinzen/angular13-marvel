@@ -8,6 +8,7 @@ import { ApiService } from 'src/app/core/http/api.service';
 })
 export class ListCharactersComponent implements OnInit {
 
+  public isLoading: boolean = false;
   public resultCharacters: any[] = [];
 
   constructor(
@@ -19,9 +20,10 @@ export class ListCharactersComponent implements OnInit {
   }
 
   handleGetCharacters() {
+    this.isLoading = true;
     this.apiService.getCharacters().subscribe(result => {
-      console.log("result", result)
       this.resultCharacters = result.data.results;
+      this.isLoading = false;
     })
   }
 }
