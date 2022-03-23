@@ -5,6 +5,7 @@ import { CharacterRoutingModule } from './character-routing.module';
 import { CharacterComponent } from './character.component';
 import { ListCharactersComponent } from './pages/list-characters/list-characters.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     CharacterRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class CharacterModule { }

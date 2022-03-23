@@ -1,36 +1,31 @@
-
-<div class="container mb-4">
-  <div class="row justify-content-md-end">
-    <div class="col-7">
-      <div class="input-group">
-        <input type="text" class="form-control-lg w-75" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-        <button class="btn btn-outline-secondary w-25" type="button" id="button-addon2">Search</button>
+<form [formGroup]="this.formSearch" (submit)="this.handleSubmitSearch($event)">
+  <div class="container mb-4">
+    <div class="row justify-content-md-end">
+      <div class="col-7">
+        <div class="input-group">
+          <input type="text" class="form-control-lg w-75" placeholder="Character Name" formControlName="keyword">
+          <button class="btn btn-outline-secondary w-25" type="button" id="button-addon2">Search</button>
+        </div>
       </div>
     </div>
   </div>
-</div>
+</form>
 
 
 <div class="container">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-    <div *ngIf="this.isLoading" class="col">
-      <app-card-loading></app-card-loading>
-    </div>
-    <div *ngFor="let item of this.resultCharacters" class="col">
-      <div class="card shadow-sm">
-        <img src="{{item.thumbnail.path}}.{{item.thumbnail.extension}}" class="img-fluid">
-        <div class="card-body">
-          <p class="card-text">{{item.name}}</p>
-          <!-- <span>{{item}}</span> -->
-          <div class="d-flex justify-content-between align-items-center">
-            <div class="btn-group">
-              <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-              <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
-            </div>
-            <small class="text-muted">9 mins</small>
-          </div>
-        </div>
+    <ng-container *ngIf="this.isLoading; else templateResult">
+      <div *ngFor="let item of this.makeCardLoading" class="col">
+        <app-card-loading></app-card-loading>
       </div>
-    </div>
+    </ng-container>
+    <ng-template #templateResult>
+      <div *ngFor="let item of this.resultCharacters" class="col">
+        <app-album-card
+          image="{{item.thumbnail.path}}.{{item.thumbnail.extension}}"
+          [name]="item.name"
+        ></app-album-card>
+      </div>
+    </ng-template>
   </div>
 </div>
