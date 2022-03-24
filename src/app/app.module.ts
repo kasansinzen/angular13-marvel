@@ -21,7 +21,7 @@ import { MarvelKeyInterceptor } from './core/interceptors/marvel-key.interceptor
     HttpClientModule,
     BrowserAnimationsModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: MarvelKeyInterceptor, multi: true}

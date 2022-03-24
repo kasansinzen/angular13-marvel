@@ -12,7 +12,7 @@
 </form>
 
 
-<div class="container">
+<div class="container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="this.handleScrolled()">
   <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
     <ng-container *ngIf="this.isLoading; else templateResult">
       <div *ngFor="let item of this.makeCardLoading" class="col">
@@ -24,8 +24,14 @@
         <app-album-card
           image="{{item.thumbnail.path}}.{{item.thumbnail.extension}}"
           [name]="item.name"
+          [description]="item.description"
         ></app-album-card>
       </div>
     </ng-template>
+    <ng-container *ngIf="this.isLoadingLoadmore;">
+      <div *ngFor="let item of this.makeCardLoading" class="col">
+        <app-card-loading></app-card-loading>
+      </div>
+    </ng-container>
   </div>
 </div>
