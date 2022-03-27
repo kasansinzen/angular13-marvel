@@ -7,12 +7,14 @@ import { ListCharactersComponent } from './pages/list-characters/list-characters
 import { SharedModule } from '../shared/shared.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
+import { DetailCharacterComponent } from './pages/detail-character/detail-character.component';
 
 
 @NgModule({
   declarations: [
     CharacterComponent,
-    ListCharactersComponent
+    ListCharactersComponent,
+    DetailCharacterComponent
   ],
   imports: [
     CommonModule,

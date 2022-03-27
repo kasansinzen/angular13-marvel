@@ -1,7 +1,7 @@
 <form [formGroup]="this.formSearch" (submit)="this.handleSubmitSearch($event)">
   <div class="container mb-4">
     <div class="row justify-content-md-end">
-      <div class="col-7">
+      <div class="col-md-7">
         <div class="input-group">
           <input type="text" class="form-control-lg w-75" placeholder="Character Name" formControlName="keyword">
           <button class="btn btn-outline-secondary w-25" type="button" id="button-addon2">Search</button>
@@ -11,9 +11,8 @@
   </div>
 </form>
 
-
-<div class="container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="this.handleScrolled()">
-  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+<div class="container">
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" infiniteScroll [infiniteScrollDistance]="1" [infiniteScrollThrottle]="this.configPerpage.offset" (scrolled)="this.handleScrolled()">
     <ng-container *ngIf="this.isLoading; else templateResult">
       <div *ngFor="let item of this.makeCardLoading" class="col">
         <app-card-loading></app-card-loading>
@@ -25,6 +24,8 @@
           image="{{item.thumbnail.path}}.{{item.thumbnail.extension}}"
           [name]="item.name"
           [description]="item.description"
+          [url]="('detail/'+item.id | url: 'urlCharacter')"
+          [date]="item.modified"
         ></app-album-card>
       </div>
     </ng-template>

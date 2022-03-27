@@ -5,6 +5,14 @@ export interface IApiMarvelResponse <T = any> {
   data: T;
 }
 
+export interface IApiMarvelDataResponse <T = any[]> {
+  ount: number;
+  limit: number;
+  offset: number;
+  results: T;
+  total: number;
+}
+
 export interface IMasterItemResult {
   available: number;
   collectionURI: string;
@@ -12,5 +20,6 @@ export interface IMasterItemResult {
   returned: number;
 }
 
+export type MarvelPerpageRequest = {offset: number, limit: number};
 export type ItemResult = {resourceURI: string, name: string};
-export type UrlResult = {resourceURI: string, name: string};
+export type UrlResult = {type: string, url: string};

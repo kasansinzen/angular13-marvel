@@ -21,7 +21,14 @@ export class ApiService {
     return params;
   }
 
-  public getCharacters(request: ICharacterRequest) {
+  anyGetByUrl<T = any>(url: string) {
+    return this.http.get<T>(url);
+  }
+
+  getCharacters(request: ICharacterRequest) {
     return this.http.get<IApiMarvelResponse<ICharacterData>>(`https://gateway.marvel.com:443/v1/public/characters`, {params: this.paramsHandler(request)})
+  }
+  getCharacterDetail(id: string) {
+    return this.http.get<IApiMarvelResponse<ICharacterData>>(`https://gateway.marvel.com:443/v1/public/characters/${id}`)
   }
 }

@@ -1,17 +1,11 @@
-import { IMasterItemResult, UrlResult } from "./api-marvel.interface";
+import { IApiMarvelDataResponse, IMasterItemResult, UrlResult } from "./api-marvel.interface";
 
-export interface ICharacterData {
-  ount: number;
-  limit: number;
-  offset: number;
-  results: ICharacterResult[];
-  total: number;
-}
+export interface ICharacterData extends IApiMarvelDataResponse<ICharacterResult[]> { }
 export interface ICharacterResult {
   id: number;
   name: string;
   description: string;
-  modified: string;
+  modified: Date;
   thumbnail: {path: string, extension: string};
   resourceURI: string;
   comics: IMasterItemResult;

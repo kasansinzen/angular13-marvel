@@ -7,6 +7,7 @@ import { FormsModule } from '@angular/forms';
 import { FooterComponent } from './components/templates/footer/footer.component';
 import { CardLoadingComponent } from './components/loadings/card-loading/card-loading.component';
 import { AlbumCardComponent } from './components/cards/album-card/album-card.component';
+import { UrlPipe } from './pipes/url.pipe';
 
 @NgModule({
   declarations: [
@@ -14,12 +15,14 @@ import { AlbumCardComponent } from './components/cards/album-card/album-card.com
     TemplatesComponent,
     FooterComponent,
     CardLoadingComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    UrlPipe
   ],
   exports: [
     TemplatesComponent,
     CardLoadingComponent,
-    AlbumCardComponent
+    AlbumCardComponent,
+    UrlPipe
   ],
   imports: [
     CommonModule,
